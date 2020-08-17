@@ -55,10 +55,14 @@ router.beforeEach((to, from, next) => {
     store.commit("setUser", currentUser);
     next("/");
   } else if (!allowAnonymous && !currentUser) {
-    next({
-      path: "login",
-      query: { redirect: to.fullPath }
-    });
+    if (to.fullPath == "/") {
+      next("login");
+    } else {
+      next({
+        path: "login",
+        query: { redirect: to.fullPath }
+      });
+    }
   } else {
     next();
   }
