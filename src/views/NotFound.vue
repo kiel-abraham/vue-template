@@ -9,3 +9,13 @@
     </v-container>
   </div>
 </template>
+
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: "Page not found"
+    };
+  }
+};
+</script>

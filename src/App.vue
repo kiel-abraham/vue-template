@@ -19,6 +19,11 @@ import Header from "@/components/TheHeader";
 
 export default {
   name: "App",
+  metaInfo() {
+    return {
+      title: "Example Vue app"
+    };
+  },
   components: {
     Header
   },

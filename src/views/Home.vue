@@ -14,3 +14,13 @@
     </v-container>
   </div>
 </template>
+
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: "Dashboard"
+    };
+  }
+};
+</script>
