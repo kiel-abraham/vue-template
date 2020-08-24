@@ -5,10 +5,25 @@
         <v-col cols="12">
           <h1>Dashboard</h1>
         </v-col>
-        <v-col v-for="n in 3" :key="n" cols="12" sm="4">
-          <v-card class="pa-2" outlined tile>
-            One of three columns
-          </v-card>
+      </v-row>
+      <v-row>
+        <v-col cols="4">
+          <v-skeleton-loader
+            type="card, paragraph"
+            boilerplate="true"
+          ></v-skeleton-loader>
+        </v-col>
+        <v-col cols="4">
+          <v-skeleton-loader
+            type="list-item-avatar-two-line, list-item-avatar-three-line, list-item-avatar-two-line, text@3"
+            boilerplate="true"
+          ></v-skeleton-loader>
+        </v-col>
+        <v-col cols="4">
+          <v-skeleton-loader
+            type="card-avatar, actions"
+            boilerplate="true"
+          ></v-skeleton-loader>
         </v-col>
       </v-row>
     </v-container>
