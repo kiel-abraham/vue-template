@@ -6,7 +6,7 @@
       <router-view />
     </v-main>
 
-    <v-footer>
+    <v-footer v-if="isAuthenticated">
       <v-spacer></v-spacer>
       <div>&copy; {{ new Date().getFullYear() }}</div>
     </v-footer>
@@ -31,9 +31,6 @@ export default {
     isAuthenticated() {
       return this.$store.getters.user;
     }
-  },
-  data: () => ({
-    //
-  })
+  }
 };
 </script>

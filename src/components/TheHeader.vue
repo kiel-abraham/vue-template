@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer
-      v-model="drawer"
-      :clipped="$vuetify.breakpoint.lgAndUp"
-      app
-    >
+    <v-navigation-drawer v-model="drawer" :clipped="$vuetify.breakpoint.lgAndUp" app>
       <v-list dense>
         <template v-for="item in items">
           <v-list-item :key="item.text" link :to="item.link">
@@ -19,12 +15,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar
-      :clipped-left="$vuetify.breakpoint.lgAndUp"
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar :clipped-left="$vuetify.breakpoint.lgAndUp" app color="primary" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <div class="d-flex align-center">
@@ -60,17 +51,19 @@
 <script>
 export default {
   name: "Header",
-  data: () => ({
-    drawer: null,
-    items: [
-      { icon: "mdi-home", text: "Dashboard", link: "/" },
-      { icon: "mdi-information", text: "About", link: "/about" },
-      { icon: "mdi-file-chart", text: "Reports" },
-      { icon: "mdi-cog", text: "Settings" },
-      { icon: "mdi-message", text: "Send feedback" },
-      { icon: "mdi-help-circle", text: "Help" }
-    ]
-  }),
+  data() {
+    return {
+      drawer: null,
+      items: [
+        { icon: "mdi-home", text: "Dashboard", link: "/" },
+        { icon: "mdi-information", text: "About", link: "/about" },
+        { icon: "mdi-file-chart", text: "Reports" },
+        { icon: "mdi-cog", text: "Settings" },
+        { icon: "mdi-message", text: "Send feedback" },
+        { icon: "mdi-help-circle", text: "Help" }
+      ]
+    };
+  },
   methods: {
     logout() {
       this.$store.dispatch("userLogout");
