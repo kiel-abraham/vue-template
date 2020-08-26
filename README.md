@@ -33,6 +33,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Additional steps
 
+Update name in package.json (this shows at page title until component loaded)
+
 Install firebase tools if not already
 
 ```
