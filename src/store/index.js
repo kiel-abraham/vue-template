@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import firebase from "firebase/app";
 import router from "@/router";
+import { auth } from "@/firebase";
 
 Vue.use(Vuex);
 
@@ -15,23 +15,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    userLogin({ commit }, { email, password, redirect }) {
-      const route = redirect || "/";
-
-      return firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(user => {
-          commit("setUser", user.user);
-          router.push(route);
-        })
-        .catch(() => {
-          return true;
-        });
-    },
     userLogout({ commit }) {
-      firebase
-        .auth()
+      auth
         .signOut()
         .then(() => {
           commit("setUser", null);

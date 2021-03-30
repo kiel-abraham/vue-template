@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import firebase from "firebase/app";
+import { auth } from "@/firebase";
 import store from "@/store";
 
 Vue.use(VueRouter);
@@ -45,7 +45,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const currentUser = firebase.auth().currentUser;
+  const currentUser = auth.currentUser;
   const allowAnonymous = to.matched.some(record => record.meta.allowAnonymous);
 
   if (!allowAnonymous && currentUser) {

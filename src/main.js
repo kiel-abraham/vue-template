@@ -4,15 +4,14 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import VueMeta from "vue-meta";
-import firebase from "firebase/app";
-import "@/firebase";
+import { auth } from "@/firebase";
 
 Vue.use(VueMeta);
 
 Vue.config.productionTip = false;
 
 let app = "";
-firebase.auth().onAuthStateChanged(() => {
+auth.onAuthStateChanged(() => {
   if (!app) {
     app = new Vue({
       router,
