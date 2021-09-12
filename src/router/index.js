@@ -46,6 +46,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const currentUser = auth.currentUser;
+  if (currentUser && currentUser.email.indexOf("@smartspeak") === -1) {
+    // authenticated but not a SmartSpeak user
+    store.dispatch("userLogout");
+  }
+  console.log(currentUser);
+
   const allowAnonymous = to.matched.some(record => record.meta.allowAnonymous);
 
   if (!allowAnonymous && currentUser) {
