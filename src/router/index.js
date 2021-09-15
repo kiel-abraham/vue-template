@@ -50,7 +50,6 @@ router.beforeEach((to, from, next) => {
     // authenticated but not a SmartSpeak user
     store.dispatch("userLogout");
   }
-  console.log(currentUser);
 
   const allowAnonymous = to.matched.some(record => record.meta.allowAnonymous);
 
@@ -59,7 +58,11 @@ router.beforeEach((to, from, next) => {
     next();
   } else if (to.path == "/login" && currentUser) {
     store.commit("setUser", currentUser);
-    next("/");
+    if (to.query && to.query.redirect) {
+      next(to.query.redirect);
+    } else {
+      next("/");
+    }
   } else if (!allowAnonymous && !currentUser) {
     if (to.fullPath == "/") {
       next("login");
